@@ -1,0 +1,13 @@
+replicaCount: web: 2 api: 2
+
+image: web: repository: "/web" tag: "latest" pullPolicy: IfNotPresent api: repository: "/api" tag: "latest" pullPolicy: IfNotPresent
+
+service: web: type: ClusterIP port: 80 api: type: ClusterIP port: 3000
+
+ingress: enabled: true className: nginx host: app.dev.mahendra.devops.example.com annotations: kubernetes.io/ingress.class: nginx cert-manager.io/cluster-issuer: letsencrypt external-dns.alpha.kubernetes.io/hostname: app.dev.mahendra.devops.example.com tls: enabled: true secretName: product-app-tls
+
+resources: web: {} api: {}
+
+autoscaling: enabled: true minReplicas: 2 maxReplicas: 5 targetCPUUtilizationPercentage: 60
+
+env: {}
