@@ -149,15 +149,6 @@ Repeat for Azure/GCP environments.
 
 ---
 
-## 📌 Next Steps (Optional Enhancements)
-
-* GitOps with Argo CD
-* Canary/Blue‑Green with Argo Rollouts
-* Service Mesh (Istio/Linkerd)
-* Multi‑region DNS failover
-
----
-
 ## 👤 Author
 
 Mahendra — Hyderabad
