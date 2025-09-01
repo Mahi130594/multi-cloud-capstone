@@ -1,13 +1,28 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import pino from 'pino';
+import productsRouter from './routes/products';
+
+
+const logger = pino();
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 
-app.get('/health', (_, res) => res.json({ ok: true }));
-app.get('/api/products', (_, res) => res.json([
-{ id: 1, name: 'Notebook', price: 4.99 },
-{ id: 2, name: 'Pen', price: 1.49 }
-]));
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
 
 
-app.listen(port, () => console.log(`API on :${port}`));
+app.use('/api', productsRouter);
+
+
+app.get('/health', (_req: Request, res: Response) => {
+res.json({ status: 'ok' });
+});
+
+
+app.listen(port, () => {
+logger.info({ port }, `Product API listening on ${port}`);
+});
