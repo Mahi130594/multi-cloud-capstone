@@ -146,6 +146,7 @@ Repeat for Azure/GCP environments.
 * App is live at `https://app.dev.mahendra.devops.example.com`
 * Dashboards visible in Grafana
 * Rollback works with `helm rollback`
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/57a2b995-391f-4ca0-bb19-4aa16b3436df" />
 
 ---
 
