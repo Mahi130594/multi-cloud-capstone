@@ -1,0 +1,3 @@
+image: web: repository: "<aws_account>.dkr.ecr..amazonaws.com/web" tag: "{{ .Chart.AppVersion }}-{{ .Values.buildSha | default "latest" }}" api: repository: "<aws_account>.dkr.ecr..amazonaws.com/api" tag: "{{ .Chart.AppVersion }}-{{ .Values.buildSha | default "latest" }}"
+
+ingress: host: app.aws.mahendra.devops.example.com annotations: kubernetes.io/ingress.class: nginx cert-manager.io/cluster-issuer: letsencrypt external-dns.alpha.kubernetes.io/hostname: app.aws.mahendra.devops.example.com
