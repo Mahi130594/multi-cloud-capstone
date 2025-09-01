@@ -1,4 +1,4 @@
-# Multi‑Cloud DevOps Capstone — README
+# Multi‑Cloud DevOps Capstone
 
 ## 📌 Overview
 
