@@ -1,19 +1,23 @@
-resource "aws_vpc" "this" {
-  cidr_block = var.vpc_cidr
-  tags = {
-    Name = "${var.env}-vpc"
-  }
+provider "aws" {
+  region = var.region
 }
 
-resource "aws_subnet" "public" {
-  count                   = length(var.public_subnets)
-  vpc_id                  = aws_vpc.this.id
-  cidr_block              = var.public_subnets[count.index]
-  availability_zone       = element(var.azs, count.index)
-  map_public_ip_on_launch = true
-  tags = { Name = "${var.env}-public-${count.index}" }
+module "network" {
+  source         = "../../modules/network"
+  env            = var.env
+  vpc_cidr       = var.vpc_cidr
+  public_subnets = var.public_subnets
+  azs            = var.azs
 }
 
-output "vpc_id" {
-  value = aws_vpc.this.id
+module "registry" {
+  source = "../../modules/container-registry"
+  env    = var.env
+}
+
+module "cluster" {
+  source     = "../../modules/k8s-cluster"
+  env        = var.env
+  vpc_id     = module.network.vpc_id
+  subnet_ids = module.network.public_subnet_ids
 }
