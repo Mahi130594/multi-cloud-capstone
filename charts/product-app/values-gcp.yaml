@@ -1,0 +1,3 @@
+image: web: repository: "gcr.io/<gcp_project>/web" tag: "{{ .Chart.AppVersion }}-{{ .Values.buildSha | default "latest" }}" api: repository: "gcr.io/<gcp_project>/api" tag: "{{ .Chart.AppVersion }}-{{ .Values.buildSha | default "latest" }}"
+
+ingress: host: app.gcp.mahendra.devops.example.com annotations: kubernetes.io/ingress.class: nginx cert-manager.io/cluster-issuer: letsencrypt external-dns.alpha.kubernetes.io/hostname: app.gcp.mahendra.devops.example.com
