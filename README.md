@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This repository contains Mahendra’s **Multi‑Cloud DevOps Capstone Project**, designed for training and demonstration. It showcases **end‑to‑end DevOps practices** across **AWS (EKS), Azure (AKS), and GCP (GKE)** with:
+This repository contains **Multi‑Cloud DevOps Capstone Project**, designed for training and demonstration. It showcases **end‑to‑end DevOps practices** across **AWS (EKS), Azure (AKS), and GCP (GKE)** with:
 
 * Infrastructure as Code (Terraform)
 * Containerized microservices (Docker)
