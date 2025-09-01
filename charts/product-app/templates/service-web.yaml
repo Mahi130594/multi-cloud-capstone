@@ -1,0 +1,1 @@
+apiVersion: v1 kind: Service metadata: name: {{ include "product-app.fullname" . }}-web labels: app: web spec: type: {{ .Values.service.web.type }} ports: - port: {{ .Values.service.web.port }} targetPort: {{ .Values.service.web.port }} protocol: TCP name: http selector: app: web release: {{ .Release.Name }}
