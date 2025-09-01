@@ -1,0 +1,3 @@
+mage: web: repository: "<azure_acr>.azurecr.io/web" tag: "{{ .Chart.AppVersion }}-{{ .Values.buildSha | default "latest" }}" api: repository: "<azure_acr>.azurecr.io/api" tag: "{{ .Chart.AppVersion }}-{{ .Values.buildSha | default "latest" }}"
+
+ingress: host: app.azure.mahendra.devops.example.com annotations: kubernetes.io/ingress.class: nginx cert-manager.io/cluster-issuer: letsencrypt external-dns.alpha.kubernetes.io/hostname: app.azure.mahendra.devops.example.com
